@@ -1,6 +1,7 @@
 /*
 - Escribe un programa que actúe como un conversor de pulgadas a centímetros y viceversa desde la línea de
 comandos. 
+
 - El programa permitirá al usuario ingresar un valor junto con la unidad de origen y la unidad de
 destino, y luego realizará la conversión correspondiente.
 
@@ -16,6 +17,7 @@ La función recibirá una estructura que contenga información de los datos, el 
 (cm ó pulgadas) y tipo de datos de salida (cm ó pulgadas) pedidos.
 
 Se valorará la calidad de la implementación en base a las siguientes pautas:
+
 - Se debe guardar en una estructura tanto el tipo de unidad como el valor de origen y destino.
 - Se valorará el uso correcto de enumerados para esta implementación.
 - Se valorará el control de errores. Si el número introducido o si las unidades especificadas no son
@@ -27,3 +29,38 @@ operaciones pedidas.
 IMPORTANTE: Una pulgada equivale a 2.54 centímetros.
 
 */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/*
+
+La función recibirá una estructura que contenga información de los datos, el tipo de datos de entrada
+(cm ó pulgadas) y tipo de datos de salida (cm ó pulgadas) pedidos.
+*/
+
+typedef struct {
+	
+	float cantidadUsuario;
+	char palabraOrigen [10];
+ 	char palabraDestino [10];
+
+} ConversionInfo_t;
+
+double convertir_longitud(ConversionInfo_t conversion);
+
+int main(int argc, char *argv []){
+	
+	ConversionInfo_t datosUsuario;
+
+	datosUsuario.cantidadUsuario = atof(argv[1]);
+	strcpy(datosUsuario.palabraOrigen, argv[2]);
+	strcpy(datosUsuario.palabraDestino, argv[3]);
+
+	printf("Los datos introducidos por el usuario son: %.2f %s %s", datosUsuario.cantidadUsuario, datosUsuario.palabraOrigen, datosUsuario.palabraDestino);
+	return 0;
+}
+
+/*double convertir_longitud(ConversionInfo_t conversion){
+	
+}*/
